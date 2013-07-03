@@ -1,0 +1,215 @@
+	body{
+				background:#ebebeb url(../images/bg.gif) repeat top left;
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:12px;
+				color:#666;
+               text-shadow:1px 1px #fff;
+				
+			}
+			#ssided{
+	           height:100%;
+               width:60px;
+               background:black;
+               left:0;
+               top:0;
+               position: fixed;
+            }
+             #loge{
+                   
+                      height:56px;
+                      width:60px;
+    
+                 }
+          #loge a{
+         
+                background: url(../images/github.png) no-repeat;
+                font-size: 0;
+                text-indent: -999px;
+                margin:10px auto;
+                width: 56px;
+                height: 56px;
+                display: block;
+                overflow: hidden;
+                 }
+ ul {
+	padding: 0;
+list-style: none;
+}
+div li {
+position: relative;
+padding: 10px 0;
+border-color: transparent;
+border-width: 1px 0;
+border-style: solid;
+
+}
+ div li a {
+ 
+    background:red;
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    display: block;
+    margin: 0 auto;
+    font-size: 0;
+    text-indent: -999px;
+    overflow: hidden;
+   } 
+ .color0 a{
+    background:#232528;
+  }
+  .color11{
+  background:#f9f9f9 url(../images/white_texture.jpg) repeat top left
+  } 
+ .color11 a{
+    background:#0072de;
+  } 
+ .color1 a{
+    background:#7b512a;
+  } 
+ .color2 a{
+    background:green;
+  } 
+ .color3 a{
+    background:orange;
+  } 
+ .color4 a{
+    background:purple;
+  } 
+ .color5 a{
+    background:yellow;
+  } 
+ .color6 a{
+  background:#898989; 
+  }
+ .color7 a{
+    background:white;
+    box-shadow: 1px 1px 4px #000;
+  } 
+ .color8 a{
+    background:url(../images/allcolor.png) no-repeat;
+  }
+  
+  .onecontent{
+    margin-left:80px;
+    margin-top:10px;
+    height: 35px;
+    border-bottom: 1px dashed #b4b4b4; 
+    font-family: "Hiragino Sans GB";
+    line-height: 24px;
+   
+  }
+  
+                 
+                 
+			h1,h2{
+				font-weight:normal;
+
+			}
+			h2{
+				float:right;
+				margin-top:35px;
+				color:#999;
+			}
+			h1{
+				color:#777;
+				font-size:45px;
+				float:left;
+				margin:10px;
+			}
+			h3{
+				color:#777;
+				display:block;
+				clear:both;
+				font-weight:normal;
+				font-size:16px;
+				margin:10px;
+				font-style:italic;
+				text-align:center;
+}
+			.content{
+				width:900px;
+				position:relative;
+				margin:6px auto 0px auto;
+			}
+			span.reference{
+				font-family:Arial;
+				text-align:center;
+				font-size:12px;
+				display:block;
+				margin-top:10px;
+			}
+			span.reference a{
+				color:#999;
+				text-transform:uppercase;
+				text-decoration:none;
+				margin-right:20px;
+			}
+.hs_container{
+	position:relative;
+	width:902px;
+	height:471px;
+	overflow:hidden;
+	clear:both;
+	border:2px solid #fff;
+	cursor:pointer;
+	-moz-box-shadow:1px 1px 3px #222;
+	-webkit-box-shadow:1px 1px 3px #222;
+	box-shadow:1px 1px 3px #222;
+}
+.hs_container .hs_area{
+	position:absolute;
+	overflow:hidden;
+}
+.hs_area img{
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+.hs_area img.hs_visible{
+	display:block;
+	z-index:9999;
+}
+.hs_area1{
+	border-right:2px solid #fff;
+}
+.hs_area4, .hs_area5{
+	border-top:2px solid #fff;
+}
+.hs_area4{
+	border-right:2px solid #fff;
+}
+.hs_area3{
+	border-top:2px solid #fff;
+}
+.hs_area1{
+	width:449px;
+	height:334px;
+	top:0px;
+	left:0px;
+}
+.hs_area2{
+	width:451px;
+	height:165px;
+	top:0px;
+	left:451px;
+}
+.hs_area3{
+	width:451px;
+	height:167px;
+	top:165px;
+	left:451px;
+}
+.hs_area4{
+	width:192px;
+	height:135px;
+	top:334px;
+	left:0px;
+}
+.hs_area5{
+	width:708px;
+	height:135px;
+	top:334px;
+	left:194px;
+}

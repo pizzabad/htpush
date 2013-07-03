@@ -1,0 +1,112 @@
+body {
+background:#ebebeb;
+font:12px/1.5 Tahoma,Verdana,Helvetica,Arial,sans-serif;
+color:#666;
+text-shadow:1px 1px #fff;
+margin: 0;
+padding: 0;
+}
+
+#sided{
+	height:100%;
+    width:60px;
+    background:black;
+    left:0;
+    top:0;
+    position: fixed;
+   }
+ #loge{
+   
+    height:56px;
+    width:60px;
+    
+ }
+ #loge a{
+  background: url(../images/github.png) no-repeat;
+    font-size: 0;
+text-indent: -999px;
+margin: 10px auto;
+width: 56px;
+height: 56px;
+display: block;
+overflow: hidden;
+ }
+ul {
+	padding: 0;
+list-style: none;
+}
+div li {
+position: relative;
+padding: 10px 0;
+border-color: transparent;
+border-width: 1px 0;
+border-style: solid;
+
+}
+ div li a {
+ 
+    background:red;
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    display: block;
+    margin: 0 auto;
+    font-size: 0;
+    text-indent: -999px;
+    overflow: hidden;
+   } 
+ .color0 a{
+    background:#232528;
+  } 
+ .color11 a{
+    background:#0072de;
+  } 
+ .color1 a{
+    background:#7b512a;
+  } 
+ .color2 a{
+    background:green;
+  } 
+ .color3 a{
+    background:orange;
+  } 
+ .color4 a{
+    background:purple;
+  } 
+ .color5 a{
+    background:yellow;
+  } 
+ .color6 a{
+   background:#898989;
+  }
+ .color7 a{
+    background:white;
+    box-shadow: 1px 1px 4px #000;
+  } 
+ .color8 a{
+    background:url(../images/allcolor.png) no-repeat;
+  }
+  .color8{
+  background:#f9f9f9 url(../images/white_texture.jpg) repeat top left
+  } 
+  .content{
+    margin-left:80px;
+    margin-top:10px;
+  }
+  .content2{
+  border-bottom: 1px dashed #b4b4b4;
+font-family: "Hiragino Sans GB";
+margin: 10px;
+height: 24px;
+line-height: 24px;
+padding-bottom: 10px;
+position: relative;
+  }
+#canvas-frame{
+  margin-left:80px;	
+  border: none;
+  cursor: pointer;
+  width: 600px;
+  height: 600px;
+  background-color: #EEEEEE;
+}
