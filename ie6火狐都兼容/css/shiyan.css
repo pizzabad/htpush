@@ -1,0 +1,42 @@
+.newleft{
+width:694px;
+height:465px;
+margin-top:10px ! important;
+margin-left:155px ! important;
+margin-top:16px;
+margin-left:77px;
+background-color:;
+float:left;
+
+
+}
+.b1,.b2,.b3,.b4,.b1b,.b2b,.b3b,.b4b,.b{display:block;overflow:hidden;}
+.b1,.b2,.b3,.b1b,.b2b,.b3b{height:1px;}
+.b2,.b3,.b4,.b2b,.b3b,.b4b,.b{border-left:1px solid #999;border-right:1px solid #999;}
+.b1,.b1b{margin:0 5px;background:#999;}
+.b2,.b2b{margin:0 3px;border-width:2px;}
+.b3,.b3b{margin:0 2px;}
+.b4,.b4b{height:2px;margin:0 1px;}
+.d1{background:#F7F8F9;}
+/*======== 兼容性圆角样式高度 =======*/
+.k1 {height:465px;}
+.k2 {height:225px;}
+.k3 {height:412px;}
+.eyetop{
+margin-left:0;
+
+height:28px;
+
+background-image: url(../images/eyehead.jpg);
+
+background-color:red;
+}
+.eyetop div{
+left:175px;
+text-decoration:none;
+display:block;
+text-align:center;
+line-height:29px;
+color:#686868;
+-moz-position: relative;
+}

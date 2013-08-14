@@ -1,0 +1,74 @@
+
+body{
+font-size:12px;
+padding:0;
+margin:0;
+}
+
+.logee{
+
+background-color:red;
+height:1500px;
+width:1348px;
+position:absolute;
+z-index:1;
+filter: alpha(opacity=50); opacity: 0.5;
+
+}
+.logee1{
+z-index:7;
+filter: alpha(opacity=50); opacity: 0.5;
+
+}
+.logeebody{
+background-color:#ffffff;
+height:300px;
+width:525px;
+z-index:1;
+position:fixed!important;
+position:absolute;
+left:expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft,10)||0)-(parseInt(this.currentStyle.marginRight,10)||0));top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+
+left:300px;
+top:100px;
+}
+.logeebody1{
+
+left:expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft,10)||0)-(parseInt(this.currentStyle.marginRight,10)||0));top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+
+z-index:8;
+}
+.firstbody{
+background-color:#ffffff;
+height:1500px;
+width:1348px;
+position:absolute;
+z-index:6;
+}
+.trzz{
+height:32px;
+}
+
+
+
+.con{overflow:hidden;  width:950px; height:390px; background-color:rgb(255, 255, 255);} 
+#carousel_container{position:relative; height:400px; overflow:hidden;} 
+#carousel_inner{width:880px; height:490px; overflow: hidden; position:absolute;margin-left:34px;} 
+#left_scroll{position: absolute;left:0;top:150px;width:33px;height:77px;cursor: pointer;cursor: hand; background:url(../images/lgg.gif) no-repeat;} 
+#right_scroll{position: absolute;top:150px;right:0; width: 33px;height: 77px;cursor: pointer;cursor: hand; background: url(../images/rgg.gif) no-repeat;} 
+#carousel_ul{
+width:9999px; 
+height:390px; 
+position:relative;
+margin-left: -30px;
+_margin-left: 0px;
+
+} 
+#carousel_ul li{width:200px; height:170px;float: left; border:solid 1px #FEDDAB;margin-top:5px; margin-right:16px; display:inline;} 
+#carousel_ul li img{width:200px; height:170px;border: 1px solid;}
+#button{
+margin-left:200px;
+}
+#errorlist a{
+margin-left:446px;
+}

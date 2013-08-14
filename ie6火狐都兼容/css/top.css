@@ -1,0 +1,50 @@
+body {
+	
+	margin-top:0;
+	}
+#loge{ 
+
+filter:alpha(Opacity=80);
+/*======== ie ff 滤镜端口=======*/
+/*======== -moz-opacity:0.5; =======*/
+/*======== opacity:0.5; =======*/ 
+
+ top:0px; left:0px;
+z-index:9999px; 
+
+
+}
+	  /*======== 页面头部 =======*/ 
+.top-head{
+	TEXT-ALIGN: center;
+	TEXT-ALIGN: center ! important;
+	margin-right:auto;
+	margin-left:auto;
+	margin-left:40px ! important ;
+     height:40px;
+    width:1003px;
+   
+}
+.log{
+	 height:85px;
+	margin-top:0;
+	width:100px;
+ }
+ .log img{
+	 TEXT-ALIGN: center ! important;
+	 margin-left:150px ! important ;
+	 margin-top:7px ! important ;
+	 height:85px ! important;
+	 float:left ! important;
+	 TEXT-ALIGN: center;
+	 margin-top:-8px;
+	 
+	 
+	 }
+.loggo{
+	   float:left ! important;
+	   margin-left:1030px ! important ;
+	   margin-top:-20px ! important ;
+	   margin:-25px 0px 0px 515px;
+	  }
+

@@ -1,0 +1,666 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+<link rel="stylesheet" href="css/top.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/1.css" />
+
+<link rel="stylesheet" href="css/top.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/menu.css" />
+<link rel="stylesheet" href="css/imagesbox.css" type="text/css">
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jq.Slide.js"></script>
+<script src="js/formValidator-4.1.3.js" type="text/javascript" charset="UTF-8"></script>
+<script src="js/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+<script language="javascript" src="js/DateTimeMask.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#temp5").Slide({
+		effect : "scroolTxt",
+    	speed : "normal",
+		timer : 3000,
+		steps:1
+	});
+	$("#temp6").Slide({
+		effect : "scroolTxt",
+    	speed : "normal",
+		timer : 3000,
+		steps:1
+	});
+	$(".eyemc1").mouseenter(function(){
+    $(".new1").css("z-index","9");
+	$(".new2").css("z-index","5");
+	$(".new3").css("z-index","4"); 
+	$(".eyemc1").css("z-index","3");
+	$(".eyemc2").css("z-index","2");
+	$(".eyemc3").css("z-index","1");
+  });
+  $(".eyemc2").mouseenter(function(){
+    $(".new1").css("z-index","5");
+	$(".new2").css("z-index","9");
+	$(".new3").css("z-index","4"); 
+    $(".eyemc1").css("z-index","2");
+	$(".eyemc2").css("z-index","3");
+	$(".eyemc3").css("z-index","1");
+  });
+  $(".eyemc3").mouseenter(function(){
+    $(".new1").css("z-index","4");
+	$(".new2").css("z-index","5");
+	$(".new3").css("z-index","9"); 
+    $(".eyemc1").css("z-index","2");
+	$(".eyemc2").css("z-index","1");
+	$(".eyemc3").css("z-index","3");
+  });
+  $(".newright1").mouseenter(function(){
+    $(".newrightnew1").css("z-index","9");
+	$(".newrightnew2").css("z-index","4");
+	$(".newright1").css("z-index","4");
+	$(".newright2").css("z-index","3");
+  });
+  $(".newright2").mouseenter(function(){
+    $(".newrightnew1").css("z-index","4");
+	$(".newrightnew2").css("z-index","5");
+	$(".newright1").css("z-index","3");
+	$(".newright2").css("z-index","4");
+	;});
+});
+$(document).ready(function(){
+	$.formValidator.initConfig({formID:"form1",theme:"ArrowSolidBox",submitOnce:true,
+		onError:function(msg,obj,errorlist){
+			$("#errorlist").empty();
+			$.map(errorlist,function(msg){
+				$("#errorlist").append("<li>" + msg + "</li>")
+			});
+			alert(msg);
+		},
+		ajaxPrompt : '有数据正在异步验证，请稍等...'
+	});
+
+	$("#us").formValidator({onShowText:"请输入用户名",onShow:"请输入用户名,只有输入\"maomao\"才是对的",onFocus:"用户名至少5个字符,最多10个字符",onCorrect:"该用户名可以注册"}).inputValidator({min:5,max:20,onError:"你输入的用户名非法,请确认"})//.regexValidator({regExp:"username",dataType:"enum",onError:"用户名格式不正确"})
+	    .ajaxValidator({
+		dataType : "json",
+		async : true,
+		url : " ",
+		success : function(data){
+            if( data == "0" ) return true;
+			return "请刷新，请更换用户名";
+		},
+		buttons: $("#button"),
+		error: function(jqXHR, textStatus, errorThrown){alert("服务器没有返回数据，可能服务器忙，请重试"+errorThrown);},
+		onError : "该用户名不可用，请更换用户名",
+		onWait : "正在对用户名进行合法性校验，请稍候..."
+	}).defaultPassed();
+	$("#password1").formValidator({onShow:"请输入密码",onFocus:"至少五位数",onCorrect:"密码合法"}).inputValidator({min:5,empty:{leftEmpty:false,rightEmpty:false,emptyError:"密码两边不能有空符号"},onError:"密码不能为空,请确认"});
+	$("#password2").formValidator({onShow:"输再次输入密码",onFocus:"至少五位数",onCorrect:"密码一致"}).inputValidator({min:5,empty:{leftEmpty:false,rightEmpty:false,emptyError:"重复密码两边不能有空符号"},onError:"重复密码不能为空,请确认"}).compareValidator({desID:"password1",operateor:"=",onError:"2次密码不一致,请确认"});
+	$("#sfzh").formValidator({ajax:true,onShow:"请输入15或18位的身份证",onFocus:"输入15或18位的身份证",onCorrect:"输入正确"}).functionValidator({fun:isCardID});
+	$("#email").formValidator({onShow:"请输入邮箱",onFocus:"邮箱6-100个字符,输入正确了才能离开焦点",onCorrect:"恭喜你,你输对了",defaultValue:"@"}).inputValidator({min:6,max:100,onError:"你输入的邮箱长度非法,请确认"}).regexValidator({regExp:"^([\\w-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([\\w-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$",onError:"你输入的邮箱格式不正确"});
+	$("#shouji").formValidator({empty:true,onShow:"请输入你的手机号码，可以为空哦",onFocus:"你要是输入了，必须输入正确",onCorrect:"谢谢你的合作",onEmpty:"你真的不想留手机号码啊？"}).inputValidator({min:11,max:11,onError:"手机号码必须是11位的,请确认"}).regexValidator({regExp:"mobile",dataType:"enum",onError:"你输入的手机号码格式不正确"});;
+	});
+function test(obj)
+{
+	if(obj.value=="不校验身份证")
+	{
+		$("#sfzh").attr("disabled",true).unFormValidator(true);
+		obj.value = "校验身份证";
+	}
+	else
+	{
+		$("#sfzh").attr("disabled",false).unFormValidator(false);
+		obj.value = "不校验身份证";
+	}
+}
+function test1(obj)
+{
+	var initConfig = $.formValidator.getInitConfig("1");
+	if(obj.value=="全角字符当做1个长度")
+	{
+		initConfig.wideword = false;
+		obj.value = "全角字符当做2个长度";
+	}
+	else
+	{
+		initConfig.wideword = true;
+		obj.value = "全角字符当做1个长度";
+	}
+	$('body').data(obj.validatorgroup,initConfig);
+}
+var SellerScroll = function(options){ 
+this.SetOptions(options); 
+this.lButton = this.options.lButton; 
+this.rButton = this.options.rButton; 
+this.oList = this.options.oList; 
+this.showSum = this.options.showSum; 
+
+this.iList = $("#" + this.options.oList + " > li"); 
+this.iListSum = this.iList.length; 
+this.iListWidth = this.iList.outerWidth(true); 
+this.moveWidth = this.iListWidth * this.showSum; 
+
+this.dividers = Math.ceil(this.iListSum / this.showSum);//?? 
+this.moveMaxOffset = (this.dividers - 1) * this.moveWidth; 
+this.LeftScroll(); 
+this.RightScroll(); 
+}; 
+SellerScroll.prototype = { 
+SetOptions: function(options){ 
+this.options = { 
+lButton: "left_scroll", 
+rButton: "right_scroll", 
+oList: "carousel_ul", 
+showSum: 4//?ι?items 
+}; 
+$.extend(this.options, options || {}); 
+}, 
+ReturnLeft: function(){ 
+return isNaN(parseInt($("#" + this.oList).css("left"))) ? 0 : parseInt($("#" + this.oList).css("left")); 
+}, 
+LeftScroll: function(){ 
+if(this.dividers == 1) return; 
+var _this = this, currentOffset; 
+$("#" + this.lButton).click(function(){ 
+currentOffset = _this.ReturnLeft(); 
+if(currentOffset == 0){ 
+for(var i = 1; i <= _this.showSum; i++){ 
+$(_this.iList[_this.iListSum - i]).prependTo($("#" + _this.oList)); 
+} 
+$("#" + _this.oList).css({ left: -_this.moveWidth }); 
+$("#" + _this.oList + ":not(:animated)").animate( { left: "+=" + _this.moveWidth }, { duration: "slow", complete: function(){ 
+for(var j = _this.showSum + 1; j <= _this.iListSum; j++){ 
+$(_this.iList[_this.iListSum - j]).prependTo($("#" + _this.oList)); 
+} 
+$("#" + _this.oList).css({ left: -_this.moveWidth * (_this.dividers - 1) }); 
+} } ); 
+}else{ 
+$("#" + _this.oList + ":not(:animated)").animate( { left: "+=" + _this.moveWidth }, "slow" ); 
+} 
+}); 
+}, 
+RightScroll: function(){ 
+if(this.dividers == 1) return; 
+var _this = this, currentOffset; 
+$("#" + this.rButton).click(function(){ 
+currentOffset = _this.ReturnLeft(); 
+if(Math.abs(currentOffset) >= _this.moveMaxOffset){ 
+for(var i = 0; i < _this.showSum; i++){ 
+$(_this.iList[i]).appendTo($("#" + _this.oList)); 
+} 
+$("#" + _this.oList).css({ left: -_this.moveWidth * (_this.dividers - 2) }); 
+
+$("#" + _this.oList + ":not(:animated)").animate( { left: "-=" + _this.moveWidth }, { duration: "slow", complete: function(){ 
+for(var j = _this.showSum; j < _this.iListSum; j++){ 
+$(_this.iList[j]).appendTo($("#" + _this.oList)); 
+} 
+$("#" + _this.oList).css({ left: 0 }); 
+} } ); 
+}else{ 
+$("#" + _this.oList + ":not(:animated)").animate( { left: "-=" + _this.moveWidth }, "slow" ); 
+} 
+}); 
+} 
+}; 
+$(document).ready(function(){ 
+var ff = new SellerScroll(); 
+}); 
+</script>
+<!-- ie二级菜单兼容样式 -->
+<!--[if lte IE 6]>
+<style type="text/css">
+table {
+border-collapse:collapse;
+margin:0; 
+padding:0;
+}
+
+.menu ul li a.hide, .menu ul li a:visited.hide {
+display:none;
+}
+
+.menu ul li a:hover {
+color:#fff; 
+background:url(images/menubackground.jpg);
+}
+
+.menu ul li a:hover ul {
+display:block; 
+position:absolute; 
+top:32px; 
+left:0; 
+width:105px;
+}
+
+.menu ul li a:hover ul li a {
+background:#D3D5D8; 
+color:#000;
+}
+
+.menu ul li a:hover ul li a:hover {
+background:#7B7D88; 
+color:#000;
+}
+</style>
+<![endif]-->
+  </head>
+ <body>
+     <div class="logee logee">
+	 
+	 </div>
+	 <div class="logeebody logeebod">
+	   <ul id="errorlist"><a href="#">关闭</a> </ul>
+       <form action="" method="post" name="form1" id="form1">
+  
+  
+  <table border="0px" style="font-size:12px" width="530px">
+    <tr class="trzz"> 
+      <td align="right" width="110px">用户名:</td>
+      <td width="100px"><input type="text" id="us" name="us" style="width:120px" value="maodong" /></td>
+      <td width="330px"><div id="usTip" style="width:280px"></div></td>
+    </tr>
+    <tr> 
+      <td align="right">密码:</td>
+      <td><input type="password" id="password1" name="password1" style="width:120px" /></td>
+      <td><div id="password1Tip" style="width:280px"></div></td>
+    </tr>
+    <tr> 
+      <td align="right">重复密码:</td>
+      <td><input type="password" id="password2" name="password2" style="width:120px" /></td>
+      <td><div id="password2Tip" style="width:280px"></div></td>
+    </tr>
+    
+    
+    <tr> 
+      <td align="right">电子邮箱:</td>
+      <td><input type="text" id="email" name="email" style="width:120px" /></td>
+      <td><div id="emailTip" style="width:280px"></div></td>
+    </tr>
+    
+    <tr> 
+      <td align="right">手机号码:</td>
+      <td><input type="text" id="shouji" name="shouji" style="width:120px" /></td>
+      <td><div id="shoujiTip" style="width:280px"></div></td>
+    </tr>
+    
+    
+    <tr> 
+      <td colspan="3"><div id="msTip" style="width:280px"></div></td>
+    </tr>
+  </table>
+  <input type="submit" name="button" id="button" value="注册" />
+</form>
+<div id="output"></div>
+
+	 
+	 
+	 </div>
+ <div class="firstbody firstbody1">
+ 
+  <div id="loge">
+   <div class="top-head"> <img src="images/topfirst.jpg" /> </div>
+    <div class="log" ><img src="images/log.jpg"  /></div>
+    <div class="loggo"><a href="#">登录/注册</a> </div>
+	<div class="menu"> <!-- 菜单和ie兼容菜单 -->
+	
+<ul>
+<li><a class="hide" href="">首页</a>
+<!--[if lte IE 6]>
+<a href="">首页
+<table><tr><td>
+<![endif]-->
+    <ul>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+    </ul>
+<!--[if lte IE 6]>
+</td></tr></table>
+</a>
+<![endif]-->
+</li>
+<li><a class="hide" href="">国家政策</a>
+<!--[if lte IE 6]>
+<a href="">国家策略
+<table><tr><td>
+<![endif]-->
+    <ul><li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	</ul>
+<!--[if lte IE 6]>
+</td></tr></table>
+</a>
+<![endif]-->
+</li>
+<li><a class="hide" href="">行业资讯</a>
+<!--[if lte IE 6]>
+<a href="">行业资讯
+<table><tr><td>
+<![endif]-->
+    <ul>
+    <li><a href="" title="menu"> 新闻动态</a></li>
+	<li><a href="" title="menu"> 价格信息</a></li>
+	<li><a href="" title="menu"> 销量排行</a></li>
+	<li><a href="" title="menu"> 研究报告</a></li>
+	
+	</ul>
+<!--[if lte IE 6]>
+</td></tr></table>
+</a>
+<![endif]-->
+</li>
+<li><a class="hide" href="">我的舆情</a>
+<!--[if lte IE 6]>
+<a href="">我的舆情
+<table><tr><td>
+<![endif]-->
+    <ul>
+    <li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+    </ul>
+<!--[if lte IE 6]>
+</td></tr></table>
+</a>
+<![endif]-->
+</li>
+<li><a class="hide" href="">竞品舆情</a>
+<!--[if lte IE 6]>
+<a href="">竞品舆情
+<table><tr><td>
+<![endif]-->
+    <ul>
+    <li><a href="" title="福特">福&nbsp;&nbsp;特</a></li>
+    <li><a href="" title="别克">别&nbsp;&nbsp;克</a></li>
+    <li><a href="" title="标志">标&nbsp;&nbsp;志</a></li>
+    <li><a href="" title="斯柯达">斯柯达</a></li>
+    
+    </ul>
+<!--[if lte IE 6]>
+</td></tr></table>
+</a>
+<![endif]-->
+</li>
+<li><a class="hide" href="">活动推荐</a>
+<!--[if lte IE 6]>
+<a href="">活动推荐
+<table><tr><td>
+<![endif]-->
+    <ul>
+    <li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	</ul>
+<!--[if lte IE 6]>
+</td></tr></table>
+</a>
+<![endif]-->
+</li>
+<li><a class="hide" href="">经典案例</a>
+<!--[if lte IE 6]>
+<a href="">经典案例
+<table><tr><td>
+<![endif]-->
+    <ul>
+    <li><a href="" title="东风雪铁龙">东风雪铁龙</a></li>
+	<li><a href="" title="新C5">新&nbsp;&nbsp;C5</a></li>
+	<li><a href="" title="世嘉">世&nbsp;&nbsp;嘉</a></li>
+	<li><a href="" title="凯旋">凯&nbsp;&nbsp;旋</a></li>
+	<li><a href="" title="爱丽舍">爱丽舍</a></li>
+	<li><a href="" title="C2">C&nbsp;&nbsp;2</a></li>
+	<li><a href="" title="毕加索">毕加索</a></li>
+	<li><a href="" title="富康">富&nbsp;&nbsp;康</a></li>
+	<li><a href="" title="塞纳">塞&nbsp;&nbsp;纳</a></li>
+	
+	
+    </ul>
+<!--[if lte IE 6]>
+</td></tr></table>
+</a>
+<![endif]-->
+</li>
+<li><a class="hide" href="">危机信息</a>
+<!--[if lte IE 6]>
+<a href="">危机信息
+<table><tr><td>
+<![endif]-->
+    <ul>
+    <li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	</ul>
+<!--[if lte IE 6]>
+</td></tr></table>
+</a>
+<![endif]-->
+<li><a class="hide" href="">研究报告</a>
+<!--[if lte IE 6]>
+<a href="">研究报告
+<table><tr><td>
+<![endif]-->
+    <ul>
+    <li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	<li><a href="" title="menu"> menu</a></li>
+	</ul>
+<!--[if lte IE 6]>
+</td></tr></table>
+</a>
+<![endif]-->
+</li>
+</ul>
+
+</div>
+</body>
+        <div class="imagebox"></div>   <!-- 页面主kv -->
+        <div class="boxx1"></div>
+		<div class="boxx2"></div>
+		<div class="boxx3"></div>
+   
+   <div class="newleft">    <!-- 我的舆情样式 -->
+   
+   <b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+           <div class="b d1 k1">
+
+		   <div class="eyetop">
+		         <div>我的舆论样式</div>
+		   </div>
+		   <div class="eyemc1"  >
+		      <a href="#" title="new">新闻</a>
+		   </div>
+		   <div class="eyemc2"  >
+		   <a href="#" title="new">论坛</a>
+		   </div>
+		   <div class="eyemc3"  >
+		   <a href="#" title="new">微博</a>
+		   </div>
+		   <div class="eyemid"  ></div>
+		   <div class="new1">
+		   <div id="temp5">
+			<div class="JQ-content-box">
+				<ul class="JQ-slide-content">
+					<li><a href="#">这是公告标题的第一行</a></li>
+					<li>这是公告标题的第二行</li>
+					<li><a href="#">这是公告标题的第三行</a></li>
+					<li>这是公告标题的第四行</li>
+					<li>这是公告标题的第五行</li>
+					<li>这是公告标题的第六行</li>
+					<li>这是公告标题的第七行</li>
+					<li>这是公告标题的第八行</li>
+					<li>这是公告标题的第9行</li>
+					<li>这是公告标题的第10行</li>
+					<li>这是公告标题的第11行</li>
+					<li><a href="#">这是公告标题的第12行</a></li>
+					<li>这是公告标题的第13行</li>
+					<li>这是公告标题的第14行</li>
+					<li>这是公告标题的第15行</li>
+				</ul>
+			</div>
+		</div>
+		   
+		   
+		   </div>
+		   <div class="new2">
+		   <div id="temp7">
+			<div class="JQ-content-box">
+				<ul class="JQ-slide-content">
+					<li><a href="#">这是公告标题的第一行</a></li>
+					<li>这是公告标题的第二行</li>
+					<li><a href="#">这是公告标题的第三行</a></li>
+					<li>这是论坛标题的第四行</li>
+					<li>这是论坛标题的第五行</li>
+					<li>这论坛标题的第六行</li>
+					<li>这是论坛标题的第七行</li>
+					<li>这是论坛标题的第八行</li>
+					<li>这是论坛标题的第9行</li>
+					<li>这是论坛标题的第10行</li>
+					<li>这是论坛标题的第11行</li>
+					<li><a href="#">这是论坛标题的第12行</a></li>
+					<li>这是论坛标题的第13行</li>
+					<li>这是论坛标题的第14行</li>
+					<li>这是论坛标题的第15行</li>
+				</ul>
+			</div>
+		</div>
+		   
+		   </div>
+		   <div class="new3"></div>
+           
+		   
+		   </div>
+    <b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
+
+   
+   </div>
+   <div class="newright">   <!-- 当日要闻 -->
+
+   <b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+          <div class="b d1 k2">
+            
+			<div class="newrighttop">
+		         <div>当日要闻</div>
+		   </div>
+		   <div class="newright1"  >
+		      <a href="#" title="new">国家政策</a>
+		   </div>
+		   <div class="newright2"  >
+		   <a href="#" title="new">行业资讯</a>
+		   </div>
+		   
+		   <div class="newrightmid" ></div>
+		   <div class="newrightnew1"></div>
+		   <div class="newrightnew2"></div>
+		   
+          
+		  </div>
+    <b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
+ 
+   </div>
+   <div class="newrightt">  <!-- 危机信息 -->
+   
+       <b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+            <div class="b d1 k2">
+               <div class="newrightdown">
+		         <div>危机信息</div>
+				  <div class="newdownnew">
+				  <div id="temp6">
+			        <div class="JQ-content-box">
+				      <ul class="JQ-slide-content">
+					<li><a href="#">这是公告标题的第一行</a></li>
+					<li>这是公告标题的第二行</li>
+					<li><a href="#">这是公告标题的第三行</a></li>
+					<li>这是论坛标题的第四行</li>
+					<li>这是论坛标题的第五行</li>
+					<li>这是论坛标题的第六行</li>
+					<li>这是论坛标题的第七行</li>
+					<li>这是论坛标题的第八行</li>
+					<li>这是论坛标题的第9行</li>
+					<li>这是论坛标题的第10行</li>
+					<li>这是论坛标题的第11行</li>
+					<li><a href="#">这是论坛标题的第12行</a></li>
+					<li>这是论坛标题的第13行</li>
+					<li>这是论坛标题的第14行</li>
+					<li>这是论坛标题的第15行</li>
+				</ul>
+			</div>
+		</div></div>
+		          
+		   </div>
+             </div>
+       <b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
+   
+   
+   </div>
+   <div class="endd">       <!-- 经典案例 -->
+          <b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+             <div class="b d1 k3">
+               <div class="enddown">
+			        <div class="enddown_cg">成功案例</div>
+					<div class="con"> 
+                        <div id="carousel_container"> 
+                           <div id="left_scroll"></div> 
+<div id="carousel_inner"> 
+<ul id="carousel_ul"> 
+<li>
+<img src="./images/1.png" /><br/><br/>
+<img src="./images/5.png" />
+</li> 
+<li>
+<img src="./images/2.png" /><br/><br/>
+<img src="./images/6.png" />
+</li><li>
+<img src="./images/3.png" /><br/><br/>
+<img src="./images/7.png" />
+</li><li>
+<img src="./images/4.png" /><br/><br/>
+<img src="./images/8.png" />
+</li><li>
+<img src="./images/1.png" /><br/><br/>
+<img src="./images/5.png" />
+</li> 
+<li>
+<img src="./images/2.png" /><br/><br/>
+<img src="./images/6.png" />
+</li><li>
+<img src="./images/3.png" /><br/><br/>
+<img src="./images/7.png" />
+</li><li>
+<img src="./images/4.png" /><br/><br/>
+<img src="./images/8.png" />
+</li>
+</ul> 
+</div> 
+<div id="right_scroll"></div> 
+</div> 
+
+</div>
+			   </div>
+             </div>
+           <b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
+   </div>
+
+</div>
+ 
+ </div>
+ </body>
+ <script type="text/javascript">
+                      
+					  $(".loggo").click(function(){
+                         $(".logee").css("z-index","7");
+						 $(".logeebody").css("z-index","8");
+							   });
+			          
+					$("#errorlist a").click(function(){
+                          $(".logee").css("z-index","1");
+						  $(".logeebody").css("z-index","1");
+                    });	 
+                                            
+</script>
+</html>

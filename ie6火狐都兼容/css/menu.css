@@ -1,0 +1,63 @@
+/*======== 菜单 =======*/ 
+.menu {
+font-family: arial, sans-serif; 
+width:990px; 
+margin-top:15px;
+margin-left:160px;
+}
+
+.menu ul {
+padding:0; 
+margin:0;
+list-style-type: none;
+}
+
+.menu ul li {
+float:left; 
+position:relative;
+}
+/*======== 默认菜单样式 =======*/
+.menu ul li a, .menu ul li a:visited {
+display:block; 
+text-align:center; 
+text-decoration:none; 
+width:104px; 
+height:30px; 
+color:#000; 
+border:1px solid #fff;
+border-width:1px 1px 0 0;
+background-image: url(../images/momenubackground.jpg); 
+line-height:30px; 
+font-size:13px;
+}
+
+.menu ul li ul {
+display: none;
+}
+/*======== 以下为非ie菜单样式 =======*/
+/*======== 点击后一级菜单样式 =======*/
+.menu ul li:hover a {
+color:#fff; 
+background:url(../images/menubackground.jpg);
+}
+/*======== 点击后一级菜单宽度 =======*/
+.menu ul li:hover ul {
+display:block; 
+position:absolute; 
+top:31px; 
+left:0; 
+width:105px;
+z-index:9999;
+}
+/*======== 点击后二级菜单样式 =======*/
+.menu ul li:hover ul li a {
+display:block; 
+background:#D3D5D8; 
+color:#000;
+z-index:9999;
+}
+
+.menu ul li:hover ul li a:hover {
+background:#7B7D88; 
+color:#000;
+}
